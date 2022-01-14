@@ -16,11 +16,11 @@ char* hello(char* greeting) {
 
     size_t l1 = strlen(greeting);
     size_t l2 = strlen(name);
-    char* buf = malloc(l1);
+    char* buf = malloc(l1 + l2 + 1);
     assert(buf != NULL);
     strcpy(buf, greeting);
     buf[l1] = ' ';
-    strncat(buf + l1 + 1, name, 32);
+    strcpy(buf, name);
     return buf;
 }
 

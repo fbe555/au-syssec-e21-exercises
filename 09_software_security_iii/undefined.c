@@ -38,9 +38,9 @@ uint32_t sum(uint32_t* p, size_t n) {
 }
 
 void square(uint32_t* p, size_t n) {
-    uint32_t* data = p;
+    //uint32_t* data = p;
     // replace the previous line with the following and see what happens
-    // uint32_t* data = __builtin_assume_aligned(p, 16);
+    uint32_t* data = __builtin_assume_aligned(p, 16);
     for (size_t i = 0; i < n; ++i) {
         data[i] = data[i] * data[i];
     }
@@ -62,6 +62,7 @@ int main(int argc, char** argv) {
         fprintf(stderr, "usage: %s <number> <number>\n", argv[0]);
         return 1;
     }
+
 
     int x = atoi(argv[1]);
     int y = atoi(argv[2]);

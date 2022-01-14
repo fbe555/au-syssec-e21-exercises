@@ -30,9 +30,9 @@ void* thread_function(void* arg) {
     thread_arg_t* thread_arg = arg;
     for (long n = thread_arg->thread_id; n < thread_arg->max_number; n += thread_arg->num_threads) {
         if (is_prime(n)) {
+            pthread_mutex_lock(thread_arg->mutex);
             long num_primes = *thread_arg->num_primes;
             num_primes += 1;
-            pthread_mutex_lock(thread_arg->mutex);
             *thread_arg->num_primes = num_primes;
             pthread_mutex_unlock(thread_arg->mutex);
         }
@@ -58,7 +58,6 @@ int main(int argc, char** argv) {
 
     pthread_mutex_t mutex;
     pthread_mutex_init(&mutex, NULL);
-    pthread_mutex_unlock(&mutex);
 
     for (size_t i = 0; i < num_threads; ++i) {
         thread_args[i].thread_id = i;

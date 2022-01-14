@@ -1,0 +1,7 @@
+Real user id: 1000
+Effective user id: 0
+Selected file: dummmy_file.txt
+Testing access
+File has size 0
+Printing file now:
+--------------------------------------------------------------------------------
